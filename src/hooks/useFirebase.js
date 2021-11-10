@@ -30,10 +30,18 @@ const useFirebase = () => {
         });
         return () => unsubscribed;
     }, [auth])
+
+    const logOut = () => {
+        setIsLoading(true);
+        signOut(auth)
+            .then(() => { })
+            .finally(() => setIsLoading(false));
+    }
     return {
         user,
         isLoading,
         signInUsingGoogle,
+        logOut
     }
 };
 
