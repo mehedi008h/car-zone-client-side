@@ -2,6 +2,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import Dashboard from './pages/Dashboard/Dashboard';
+import PlaceOrder from './pages/Dashboard/User/PlaceOrder/PlaceOrder';
+import Explores from './pages/Explores/Explores/Explores';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import PrivateRouter from './pages/Login/PrivateRouter/PrivateRouter';
@@ -21,6 +23,12 @@ function App() {
             </Route>
             <PrivateRouter path="/dashboard">
               <Dashboard></Dashboard>
+            </PrivateRouter>
+            <PrivateRouter path="/explore">
+              <Explores></Explores>
+            </PrivateRouter>
+            <PrivateRouter path="/place-order/:id">
+              <PlaceOrder></PlaceOrder>
             </PrivateRouter>
             <Route path="/login">
               <Login></Login>

@@ -45,6 +45,7 @@ const Dashboard = (props) => {
         <div>
             <Toolbar />
             <Divider />
+            <Link to={"/explore"}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon>Explore</Link>
             {admin && <Link to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon> Appointment</Link>}
 
             <Link to={`${url}/addProduct`}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon> addProduct</Link>
