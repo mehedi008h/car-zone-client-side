@@ -34,6 +34,7 @@ import MyOrder from './User/MyOrder/MyOrder';
 import AddReview from './User/AddReview/AddReview';
 import DashboardHome from './DashboardHome';
 import Paymant from './User/Payment/Paymant';
+import ManageProducts from './Admin/ManageProducts/ManageProducts';
 
 const drawerWidth = 240;
 
@@ -57,12 +58,12 @@ const Dashboard = (props) => {
             <div className="sidebar-link">
                 <Link to={"/explore"} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Explore</Link>
                 {admin && <Link to={`${url}/makeAdmin`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Make Admin</Link>}
-
-                <Link to={`${url}/addProduct`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Product</Link>
-                <Link to={`${url}/manageOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Manage All Order</Link>
-                <Link to={`${url}/pay`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Pay</Link>
-                <Link to={`${url}/myOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>My Order</Link>
-                <Link to={`${url}/addReview`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Review</Link>
+                {admin && <Link to={`${url}/addProduct`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Product</Link>}
+                {admin && <Link to={`${url}/manageProduct`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Manage Product</Link>}
+                {admin && <Link to={`${url}/manageOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Manage All Order</Link>}
+                {!admin && <Link to={`${url}/pay`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Pay</Link>}
+                {!admin && <Link to={`${url}/myOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>My Order</Link>}
+                {!admin && <Link to={`${url}/addReview`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Review</Link>}
                 <button onClick={logOut} className="btn-logout"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Logout</button>
             </div>
         </div>
@@ -141,9 +142,12 @@ const Dashboard = (props) => {
                     <AdminRouter path={`${path}/manageOrder`}>
                         <ManageOrders></ManageOrders>
                     </AdminRouter>
-                    <Route path={`${path}/addProduct`}>
+                    <AdminRouter path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
-                    </Route>
+                    </AdminRouter>
+                    <AdminRouter path={`${path}/manageProduct`}>
+                        <ManageProducts></ManageProducts>
+                    </AdminRouter>
                     <Route path={`${path}/myOrder`}>
                         <MyOrder></MyOrder>
                     </Route>

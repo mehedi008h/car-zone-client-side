@@ -1,6 +1,6 @@
 import { TextField, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 import Header from '../../../Shared/Header/Header';
@@ -14,7 +14,8 @@ const PlaceOrder = () => {
     const initialInfo = { userName: user.displayName, email: user.email, address: '', phone: '' }
     const [orderInfo, setOrderInfo] = useState(initialInfo);
 
-    console.log(orderInfo);
+    let history = useHistory();
+
     let date = new Date();
 
     const handleOnBlur = e => {
@@ -32,6 +33,7 @@ const PlaceOrder = () => {
             productImg: img,
             productName: name,
             productPrice: price,
+            status: 'pending',
             date: date.toLocaleDateString()
         }
         // send to the server
@@ -47,6 +49,7 @@ const PlaceOrder = () => {
                 if (data.insertedId) {
                     swal("Good job!", "Your Order Placed Successfully!", "success");
                     e.target.reset();
+                    history.push('/dashboard/myOrder');
                 }
             });
 
@@ -106,7 +109,7 @@ const PlaceOrder = () => {
                                     sx={{ width: '100%', marginTop: 3 }}
                                     type="text" id="outlined-basic"
                                     label="Phone" variant="outlined" />
-                                <Button sx={{ width: '100%', marginTop: 3 }} type="submit" variant="contained">Add Product</Button>
+                                <Button sx={{ width: '100%', marginTop: 3 }} type="submit" variant="contained">Purchase</Button>
                             </form>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-import { Box } from '@mui/system';
 import React from 'react';
 import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -15,20 +14,22 @@ const Header = () => {
                     <Navbar.Brand as={Link} to="/">Car Zone</Navbar.Brand>
                     <Navbar.Toggle className="text-dark" aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className="text-dark" id="responsive-navbar-nav">
-                        <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/home" className="me-3">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/explore" className="me-3">Explore</Nav.Link>
-                            <Nav.Link as={Link} to="/dashboard" className="me-3">Dashboard</Nav.Link>
-
+                        <Nav className="ms-auto text-center">
+                            <Nav.Link as={Link} to="/home" className="me-3 text-white">Home</Nav.Link>
+                            <Nav.Link as={Link} to="/explore" className="me-3 text-white">Explore</Nav.Link>
+                            {user?.email &&
+                                <Nav.Link as={Link} to="/dashboard" className="me-3 text-white">Dashboard</Nav.Link>
+                            }
+                            {user?.email &&
+                                <img className="user-img me-2" src={user?.photoURL} alt="" />
+                            }
+                            {user?.email &&
+                                <Nav.Link className="me-3 text-white">{user?.displayName}</Nav.Link>
+                            }
                             {user?.email ?
-                                <Box>
-                                    <img className="user-img me-2" src={user?.photoURL} alt="" />
-                                    <Link to="/login" className="link">{user?.displayName}</Link>
-                                    <Button onClick={logOut} variant="success" className="logout text-white me-2 text-success">Logout</Button>
-                                </Box> :
-                                <Box>
-                                    <Nav.Link as={Link} to="/login" className="me-3">Login</Nav.Link>
-                                </Box>
+                                <Button onClick={logOut} variant="success" className="logout text-white me-2 text-success">Logout</Button>
+                                :
+                                <Nav.Link as={Link} to="/login" className="me-3 text-white">Login</Nav.Link>
                             }
                         </Nav>
                     </Navbar.Collapse>

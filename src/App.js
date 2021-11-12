@@ -8,6 +8,9 @@ import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import PrivateRouter from './pages/Login/PrivateRouter/PrivateRouter';
 import Signup from './pages/Login/Signup/Signup';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Notfound from './pages/NotFound/Notfound';
 
 function App() {
   return (
@@ -24,9 +27,9 @@ function App() {
             <PrivateRouter path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRouter>
-            <PrivateRouter path="/explore">
+            <Route path="/explore">
               <Explores></Explores>
-            </PrivateRouter>
+            </Route>
             <PrivateRouter path="/place-order/:id">
               <PlaceOrder></PlaceOrder>
             </PrivateRouter>
@@ -35,6 +38,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <Signup></Signup>
+            </Route>
+            <Route path="*">
+              <Notfound></Notfound>
             </Route>
           </Switch>
         </BrowserRouter>

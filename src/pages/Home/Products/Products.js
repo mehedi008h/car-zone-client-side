@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../../Shared/Footer/Footer';
-import Header from '../../Shared/Header/Header';
-import Product from '../Product/Product';
-import './Explores.css';
+import Product from '../../Explores/Product/Product';
+import { Link } from 'react-router-dom';
 
-const Explores = () => {
+const Products = () => {
     const [products, setProducts] = useState([]);
+
+    const item = products.slice(0, 6);
 
     useEffect(() => {
         fetch('http://localhost:5000/product')
@@ -14,14 +14,17 @@ const Explores = () => {
     }, []);
     return (
         <div>
-            <Header></Header>
-            <div className="container mb-5">
-                <div className="product-info">
-                    <h3 className="text-center">Our Products</h3>
+            <div className="container">
+                <div className=" mt-5">
+                    <div className="d-flex align-items-center justify-content-between">
+                        <h3 className="text-center">Our Products</h3>
+                        <Link to={'/explore'} className="btn btn-outline-info  fw-bold">Explore More</Link>
+                    </div>
+
                 </div>
                 <div className="row g-4 mt-4">
                     {
-                        products.map(product => <div className="col-md-4">
+                        item.map(product => <div className="col-md-4">
                             <Product
                                 key={product._id}
                                 product={product}
@@ -31,9 +34,8 @@ const Explores = () => {
                     }
                 </div>
             </div>
-            <Footer></Footer>
         </div>
     );
 };
 
-export default Explores;
+export default Products;

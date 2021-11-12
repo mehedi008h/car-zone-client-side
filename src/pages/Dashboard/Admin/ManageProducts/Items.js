@@ -1,15 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from "react-router-dom";
-import './Product.css';
+import { useHistory } from 'react-router';
 
-const Product = (props) => {
+const Items = (props) => {
     const { _id, name, price, description, img } = props.product;
+    const { handleDelete } = props;
 
-    let history = useHistory();
-
-    const handleOrder = () => {
-        history.push(`/place-order/${_id}`);
-    }
     return (
         <div>
             <div className="product">
@@ -23,10 +18,10 @@ const Product = (props) => {
                         <h5>{price}</h5>
                     </div>
                 </div>
-                <button onClick={handleOrder} className="buy-btn">Purchase</button>
+                <button onClick={() => handleDelete(_id)} className="buy-btn">Delete</button>
             </div>
         </div>
     );
 };
 
-export default Product;
+export default Items;

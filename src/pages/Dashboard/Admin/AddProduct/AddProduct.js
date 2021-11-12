@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import swal from 'sweetalert';
+import { useHistory } from 'react-router';
 
 const AddProduct = () => {
     const [product, setProduct] = useState({});
-    console.log(product);
+
+    let history = useHistory();
 
     const handleOnChange = e => {
         const field = e.target.name;
@@ -27,7 +29,7 @@ const AddProduct = () => {
                 if (data.insertedId) {
                     swal("Good job!", "Item Added Successfully!", "success");
                     e.target.reset();
-
+                    history.push('/explore');
                 }
             })
         e.preventDefault();

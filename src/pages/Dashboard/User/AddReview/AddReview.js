@@ -1,19 +1,23 @@
 import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 
 const AddReview = () => {
     const { user } = useAuth();
-    const [review, setReview] = useState({});
     const { displayName, email } = user;
+    const initialInfo = { name: user.displayName, email: user.email, description: '', rating: '' }
+    const [reviewInfo, setReviewInfo] = useState(initialInfo);
+
+    let history = useHistory();
 
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newLoginData = { ...review };
-        newLoginData[field] = value;
-        setReview(newLoginData);
+        const newInfo = { ...reviewInfo };
+        newInfo[field] = value;
+        setReviewInfo(newInfo);
     }
     const handleAddReview = e => {
         fetch('http://localhost:5000/addReview', {
@@ -21,14 +25,14 @@ const AddReview = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(review)
+            body: JSON.stringify(reviewInfo)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
                     swal("Good job!", "Item Added Successfully!", "success");
                     e.target.reset();
-
+                    history.push('/home');
                 }
             })
         e.preventDefault();
@@ -66,9 +70,9 @@ const AddReview = () => {
                             onBlur={handleOnBlur}
                             name="rating"
                             sx={{ width: '100%', marginTop: 3 }}
-                            type="text" id="outlined-basic"
+                            type="number" id="outlined-basic"
                             label="Your Rating" variant="outlined" />
-                        <Button sx={{ width: '100%', marginTop: 3 }} type="submit" variant="contained">Sign in</Button>
+                        <Button sx={{ width: '100%', marginTop: 3 }} type="submit" variant="contained">Add Review</Button>
                     </form>
                 </div>
             </div>

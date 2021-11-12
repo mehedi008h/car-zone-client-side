@@ -1,0 +1,11 @@
+.banner {
+    background-color: olive;
+}
+.banner-info {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+.banner-info h1 {
+    color: wheat;
+}
