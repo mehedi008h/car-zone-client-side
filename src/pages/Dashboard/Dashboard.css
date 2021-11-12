@@ -1,0 +1,45 @@
+.nav-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid maroon;
+}
+.sidebar-link {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    padding-right: 10px;
+}
+.link-item {
+    padding: 10px;
+    text-decoration: none;
+    margin-left: 10px;
+    color: black;
+    font-size: 17px;
+}
+.btn-logout {
+    padding: 10px;
+    color: black;
+    border: none;
+    text-align: start;
+    margin-left: 10px;
+    background-color: white;
+    font-size: 17px;
+    
+}
+.link-item:hover {
+    background-image: linear-gradient(to right top, #f03992, #ef328e, #ee2a8b, #ec2087, #eb1283);
+    color: white;
+    border-radius: 5px;
+}
+.btn-logout:hover {
+    background-image: linear-gradient(to right top, #f03992, #ef328e, #ee2a8b, #ec2087, #eb1283);
+    color: white;
+    border-radius: 5px;
+}
+.dashboard-text {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-top: 10px;
+}

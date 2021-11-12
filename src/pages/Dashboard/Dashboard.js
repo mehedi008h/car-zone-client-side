@@ -28,6 +28,12 @@ import AddProduct from './Admin/AddProduct/AddProduct';
 import useAuth from '../../hooks/useAuth';
 import AdminRouter from '../Login/AdminRouter/AdminRouter';
 import { Button } from '@mui/material';
+import './Dashboard.css';
+import ManageOrders from './Admin/ManageOrders/ManageOrders';
+import MyOrder from './User/MyOrder/MyOrder';
+import AddReview from './User/AddReview/AddReview';
+import DashboardHome from './DashboardHome';
+import Paymant from './User/Payment/Paymant';
 
 const drawerWidth = 240;
 
@@ -43,24 +49,22 @@ const Dashboard = (props) => {
 
     const drawer = (
         <div>
-            <Toolbar />
-            <Divider />
-            <Link to={"/explore"}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon>Explore</Link>
-            {admin && <Link to={`${url}/makeAdmin`}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon> Appointment</Link>}
+            {/* <Toolbar />
+            <Divider /> */}
+            <div className="text-center mt-5">
+                <img className="nav-img" src={user.photoURL} alt="" />
+            </div>
+            <div className="sidebar-link">
+                <Link to={"/explore"} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Explore</Link>
+                {admin && <Link to={`${url}/makeAdmin`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Make Admin</Link>}
 
-            <Link to={`${url}/addProduct`}><FontAwesomeIcon icon={faGoogle} className="me-2"></FontAwesomeIcon> addProduct</Link>
-            <Button onClick={logOut} variant="success" className="logout text-white me-2 text-success">Logout</Button>
-
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
+                <Link to={`${url}/addProduct`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Product</Link>
+                <Link to={`${url}/manageOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Manage All Order</Link>
+                <Link to={`${url}/pay`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Pay</Link>
+                <Link to={`${url}/myOrder`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>My Order</Link>
+                <Link to={`${url}/addReview`} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Add Review</Link>
+                <button onClick={logOut} className="btn-logout"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Logout</button>
+            </div>
         </div>
     );
 
@@ -128,11 +132,26 @@ const Dashboard = (props) => {
             >
                 <Toolbar />
                 <Switch>
+                    <Route exact path={path}>
+                        <DashboardHome></DashboardHome>
+                    </Route>
                     <AdminRouter path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
                     </AdminRouter>
+                    <AdminRouter path={`${path}/manageOrder`}>
+                        <ManageOrders></ManageOrders>
+                    </AdminRouter>
                     <Route path={`${path}/addProduct`}>
                         <AddProduct></AddProduct>
+                    </Route>
+                    <Route path={`${path}/myOrder`}>
+                        <MyOrder></MyOrder>
+                    </Route>
+                    <Route path={`${path}/addReview`}>
+                        <AddReview></AddReview>
+                    </Route>
+                    <Route path={`${path}/pay`}>
+                        <Paymant></Paymant>
                     </Route>
                 </Switch>
             </Box>
