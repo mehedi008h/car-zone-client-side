@@ -7,7 +7,7 @@ const ManageOrders = () => {
     console.log(orders);
 
     useEffect(() => {
-        fetch('http://localhost:5000/manageOrder')
+        fetch('https://sleepy-caverns-13881.herokuapp.com/manageOrder')
             .then(res => res.json())
             .then(data => {
                 setOrders(data);
@@ -24,7 +24,7 @@ const ManageOrders = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/manageOrder/${id}`;
+                    const url = `https://sleepy-caverns-13881.herokuapp.com/manageOrder/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })

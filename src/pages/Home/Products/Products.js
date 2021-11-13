@@ -8,7 +8,7 @@ const Products = () => {
     const item = products.slice(0, 6);
 
     useEffect(() => {
-        fetch('http://localhost:5000/product')
+        fetch('https://sleepy-caverns-13881.herokuapp.com/product')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);

@@ -17,7 +17,7 @@ const AddProduct = () => {
     }
 
     const handleAddProduct = e => {
-        fetch('http://localhost:5000/product', {
+        fetch('https://sleepy-caverns-13881.herokuapp.com/product', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

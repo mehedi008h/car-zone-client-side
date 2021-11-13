@@ -37,7 +37,7 @@ const PlaceOrder = () => {
             date: date.toLocaleDateString()
         }
         // send to the server
-        fetch('http://localhost:5000/place-order', {
+        fetch('https://sleepy-caverns-13881.herokuapp.com/place-order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const PlaceOrder = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/place-order/${id}`)
+        fetch(`https://sleepy-caverns-13881.herokuapp.com/place-order/${id}`)
             .then(res => res.json())
             .then(data => setProductDetails(data));
     }, [id])

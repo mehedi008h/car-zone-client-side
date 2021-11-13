@@ -6,7 +6,7 @@ const ManageProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/product')
+        fetch('https://sleepy-caverns-13881.herokuapp.com/product')
             .then(res => res.json())
             .then(data => setProducts(data));
     }, []);
@@ -22,7 +22,7 @@ const ManageProducts = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    const url = `http://localhost:5000/manageProduct/${id}`;
+                    const url = `https://sleepy-caverns-13881.herokuapp.com/manageProduct/${id}`;
                     fetch(url, {
                         method: 'DELETE'
                     })
