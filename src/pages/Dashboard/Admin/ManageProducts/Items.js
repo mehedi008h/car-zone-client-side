@@ -1,5 +1,4 @@
 import React from 'react';
-import { useHistory } from 'react-router';
 
 const Items = (props) => {
     const { _id, name, price, description, img } = props.product;

@@ -3,6 +3,7 @@ import { Container, Nav, Navbar, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import './Header.css';
+import avater from '../../../image/user.png';
 
 const Header = () => {
     const { user, logOut } = useAuth();
@@ -21,7 +22,7 @@ const Header = () => {
                                 <Nav.Link as={Link} to="/dashboard" className="me-3 text-white">Dashboard</Nav.Link>
                             }
                             {user?.email &&
-                                <img className="user-img me-2" src={user?.photoURL} alt="" />
+                                <img className="user-img me-2" src={user?.photoURL ? user?.photoURL : avater} alt="" />
                             }
                             {user?.email &&
                                 <Nav.Link className="me-3 text-white">{user?.displayName}</Nav.Link>

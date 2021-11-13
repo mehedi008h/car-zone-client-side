@@ -3,15 +3,8 @@ import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -27,7 +20,6 @@ import MakeAdmin from './Admin/MakeAdmin/MakeAdmin';
 import AddProduct from './Admin/AddProduct/AddProduct';
 import useAuth from '../../hooks/useAuth';
 import AdminRouter from '../Login/AdminRouter/AdminRouter';
-import { Button } from '@mui/material';
 import './Dashboard.css';
 import ManageOrders from './Admin/ManageOrders/ManageOrders';
 import MyOrder from './User/MyOrder/MyOrder';
@@ -35,6 +27,7 @@ import AddReview from './User/AddReview/AddReview';
 import DashboardHome from './DashboardHome';
 import Paymant from './User/Payment/Paymant';
 import ManageProducts from './Admin/ManageProducts/ManageProducts';
+import avater from '../../image/user.png';
 
 const drawerWidth = 240;
 
@@ -53,7 +46,11 @@ const Dashboard = (props) => {
             {/* <Toolbar />
             <Divider /> */}
             <div className="text-center mt-5">
-                <img className="nav-img" src={user.photoURL} alt="" />
+                {
+                    user.photoURL ? <img className="nav-img" src={user.photoURL} alt="" /> :
+                        <img className="nav-img" src={avater} alt="" />
+                }
+
             </div>
             <div className="sidebar-link">
                 <Link to={"/explore"} className="link-item"><FontAwesomeIcon icon={faGoogle} className="me-4"></FontAwesomeIcon>Explore</Link>

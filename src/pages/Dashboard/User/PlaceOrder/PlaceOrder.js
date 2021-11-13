@@ -60,7 +60,7 @@ const PlaceOrder = () => {
         fetch(`http://localhost:5000/place-order/${id}`)
             .then(res => res.json())
             .then(data => setProductDetails(data));
-    }, [])
+    }, [id])
     return (
         <div>
             <Header></Header>

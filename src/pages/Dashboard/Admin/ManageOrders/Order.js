@@ -1,13 +1,12 @@
 import { faPaypal } from '@fortawesome/free-brands-svg-icons';
-import { faCalendar, faEdit, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faCalendar, faStar, faUser } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import swal from 'sweetalert';
 import useAuth from '../../../../hooks/useAuth';
 import './Order.css';
 
 const Order = (props) => {
-    const { _id, productName, address, date, email, phone, productImg, productPrice, userName, status } = props.order;
+    const { _id, productName, date, productImg, productPrice, userName, status } = props.order;
     const { handleDelete } = props;
     const { admin } = useAuth();
     return (
@@ -30,7 +29,7 @@ const Order = (props) => {
                                 <p> <FontAwesomeIcon icon={faPaypal}></FontAwesomeIcon> {productPrice}</p>
                             </div>
                             <div className="col-md-3">
-                                <p> <FontAwesomeIcon icon={faPaypal}></FontAwesomeIcon> {status}</p>
+                                <p> <FontAwesomeIcon icon={faStar}></FontAwesomeIcon> {status}</p>
                             </div>
                         </div>
                     </div>

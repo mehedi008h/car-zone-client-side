@@ -5,10 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TextField, Button } from '@mui/material';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import Header from '../../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
+import swal from 'sweetalert';
 
 const Signup = () => {
     const [loginData, setLoginData] = useState({});
-    const { signInWithGoogle, isLoading, authError, registerUser } = useAuth();
+    const { signInWithGoogle, isLoading, registerUser } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
@@ -25,7 +27,7 @@ const Signup = () => {
     }
     const handleLoginSubmit = e => {
         if (loginData.password !== loginData.password2) {
-            alert('Your password did not match');
+            swal("Something Went Wrong!", "Your password did not match!", "danger");
             return
         }
         registerUser(loginData.email, loginData.password, loginData.name, history);
@@ -34,9 +36,9 @@ const Signup = () => {
     return (
         <div>
             <Header></Header>
-            <div className="container mt-5">
+            <div className="container mt-5 mb-5">
                 <div className="row">
-                    <div className="col-md-6 mt-5">
+                    <div className="col-md-6 col-md-offset-6 mx-auto mt-5">
                         <div className="login-card">
                             <h3 className="text-center">Signup</h3>
                             {!isLoading &&
@@ -76,15 +78,13 @@ const Signup = () => {
                             <p className="text-center mt-3 fw-bold">Already Have An Account? <Link to="/login" style={{ textDecoration: 'none' }} className="">Login</Link></p>
                             <hr />
                             <div className="text-center">
-                                <button onClick={handleGoogleSignIn} className="btn btn-outline-danger"><FontAwesomeIcon className="me-3" icon={faGoogle}></FontAwesomeIcon>Login with google</button>
+                                <button onClick={handleGoogleSignIn} className="btn btn-outline-danger"><FontAwesomeIcon className="me-3" icon={faGoogle}></FontAwesomeIcon>CONTINUE WITH GOOGLE</button>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-
-                    </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

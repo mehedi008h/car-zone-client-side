@@ -1,6 +1,7 @@
 import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import admin from '../../../../image/unauthorized-person.png';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
@@ -20,8 +21,7 @@ const MakeAdmin = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    swal("Good job!", "You clicked the button!", "success");
-                    console.log(data);
+                    swal("Good job!", "Make Admin Successfully!", "success");
                 }
             })
 
@@ -30,6 +30,9 @@ const MakeAdmin = () => {
     return (
         <div>
             <div className="container text-center">
+                <div className="text-center mb-5">
+                    <img width="20%" src={admin} alt="" />
+                </div>
                 <form onSubmit={handleAdminSubmit}>
                     <TextField
                         sx={{ width: '50%' }}

@@ -4,12 +4,13 @@ import { TextField, Button } from '@mui/material';
 import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import './Login.css';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { signInWithGoogle, isLoading, authError, loginUser } = useAuth();
+    const { signInWithGoogle, loginUser } = useAuth();
     const location = useLocation();
     const history = useHistory();
 
@@ -31,9 +32,9 @@ const Login = () => {
     return (
         <div>
             <Header></Header>
-            <div className="container mt-5">
+            <div className="container mb-5 mt-5">
                 <div className="row">
-                    <div className="col-md-6 mt-5">
+                    <div className="col-md-6 col-md-offset-6 mx-auto mt-5">
                         <div className="login-card">
                             <h3 className="text-center">Login</h3>
                             <form onSubmit={handleLoginSubmit} className="mt-4 d-flex flex-column">
@@ -54,15 +55,13 @@ const Login = () => {
                             <p className="text-center mt-3 fw-bold">Dont Have Account? <Link to="/signup" style={{ textDecoration: 'none' }} className="">Sign Up</Link></p>
                             <hr />
                             <div className="text-center">
-                                <button onClick={handleGoogleSignIn} className="btn btn-outline-danger"><FontAwesomeIcon className="me-3" icon={faGoogle}></FontAwesomeIcon>Login with google</button>
+                                <button onClick={handleGoogleSignIn} className="btn btn-outline-danger"><FontAwesomeIcon className="me-3" icon={faGoogle}></FontAwesomeIcon>CONTINUE WITH GOOGLE</button>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-
-                    </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

@@ -51,7 +51,7 @@ const MyOrder = () => {
             <h3 className="text-center">My Order</h3>
             <div className="container">
                 {
-                    orders.filter((myorder) => myorder.email == user.email).map(order => <Order
+                    orders.filter((myorder) => myorder.email === user.email).map(order => <Order
                         key={order._id}
                         order={order}
                         handleDelete={handleDelete}
